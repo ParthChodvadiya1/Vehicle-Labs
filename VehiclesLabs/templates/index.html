@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+pdf    <title>Editable Invoice</title> <meta charset="UTF-8">
+  <meta name="description" content="Free Web tutorials">
+  <meta name="keywords" content="HTML, CSS, JavaScript">
+  <meta name="author" content="John Doe">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type='text/css'>
+      body {
+        font-size: 12px;
+      }
+      table{
+              margin: 8px;
+              border-collapse: collapse;
+              text-align:center;
+          }
+      table tr{
+              border-bottom: 0.5px solid #666;
+          }
+      table tr:nth-child(2n){
+              background: #f2f2f2;
+          }
+      table th, table td{
+              padding-top: 5px;
+          }
+      .header {
+          width: 100%;
+          background-color: #ff2600;
+          text-align: center;
+          vertical-align: middle;
+          color: white;
+          font: bold 20px , Sans-Serif;
+          text-decoration: uppercase;
+          padding-top: 17px;
+      }
+      .header2 {
+          text-align: center;
+          color: black;
+          font: bold 25px , Sans-Serif;
+          text-decoration: uppercase;
+      }
+    </style>
+  </head>
+  <body>
+        <p class="header">JOBCARD</p>
+        <div class="header2"> <p>{{workshop.workshopname}}</p></div>
+        <div style="text-align: center ; color: black; font-size:15px;">ADDRESS: {{workshop.workshopaddress}}</div>
+        <hr>
+        <div style="display:flex;justify-content:space-around;flex-wrap:wrap" ></div>
+        <div style="font-size: 12px;">{{customer.cusname}}<div>
+        <div>{{customer.cusphone}}</div>
+        <div>{{customer.cusemail}}</div>
+        <div>{{customer.cusaddress}}</div>
+        <hr>
+        <div style="width: 100%; font-size:18px; font-weight:6px; padding-top:15px; padding-bottom: 5px">Vehicle info:</div>
+        <div>{{vehicle.kilometer}}<div>
+        <div>{{vehicle.chasisnumber}}</div>
+        <div>{{vehicle.enginenumber}}</div>
+        <div>{{vehicle.fuelIndicator}}</div>
+        <div>{{fueltype}}</div>
+        <hr>
+        <div style="width: 100%; font-size:18px; font-weight:6px; padding-top:15px; padding-bottom: -12px">Invoice info:</div>
+        <table style="float:right">
+          <tr>
+            <tr>
+              <th style="width:130px">Invoice ID</th>
+              <th style="width:200px">Invoice ID{{InvoiceID}}</th>
+            </tr>
+          <tr>
+            <td><div>Date</div></td>
+            <td><div>{{createddate}}</div></td>
+          </tr>
+          <tr>
+            <td><div>Total price</div></td>
+            <td><strong>{{total}} Rs.</strong></td>
+          </tr>
+        </table>
+        </div>
+          <div style="width: 100%; font-size:18px; font-weight:6px; padding-top:15px;">Parts: </div>
+          <table>
+            <tr style="background-color:#ff4900">
+              <th>Part name</th>
+              <th>Part type</th>
+              <th>Part Qty</th>
+              <th>Price</th>
+            </tr>
+            {% for parts in jobcardParts %}
+              <tr>
+                <td><div>{{parts.partname}}</div></td>
+                <td><div>{{parts.parttype}}</div></td>
+                <td><div>{{parts.partqty}}</div></td>
+                <td><div>{{parts.partprice}} Rs.</div></td>
+                </tr>
+            {% endfor %} 
+          </table>
+          <p style="text-decoration: underline ;font-size: 13px;text-align:right">Total parts Amount  : <strong>{{totalPartsAmount}}</strong> Rs.</p>
+          <div style="width: 100%; font-size:18px; font-weight:6px; padding-top:15px;">Services: </div>
+            <table>
+              <tr style="background-color:#ff4900">
+                <th>Service name</th>
+                <th>Service type</th>
+                <th>Price</th>
+              </tr>
+              {% for service in jobcardServices %}
+                <tr>
+                  <td><div>{{service.servicename}}</div></td>
+                  <td><div>{{service.servicetype}}</div></td>
+                  <td><div>{{service.serviceprice}} Rs.</div></td>
+                </tr>
+              {% endfor %}
+            </table>
+          <p style="text-decoration: underline ;font-size: 13px;text-align:right">Total service Amount  :  <strong>{{totalServiceAmount}} </strong> Rs.</p>
+          <br><br>
+          <div style="font-size: 15px;text-align:right">Total  : <b>{{total}}  Rs.</b></div>
+          <div style=" font-size: 15px;text-align:right">GST  : 0  Rs.</div>
+          <div style=" font-size: 15px;text-align:right">Discount  : 0  Rs.</div>
+          <hr>
+          <div style=" font-size: 15px;text-align:right">Final Amount  : <b>{{total}}  Rs.</b></div>
+  </body>
+</html>

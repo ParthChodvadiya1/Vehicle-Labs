@@ -1,0 +1,15 @@
+{
+  "apps": [
+    {
+      "name": "vehicleslabs-backend",
+      "script": "VehiclesLabs/manage.py",
+      "args": ["runserver", "127.0.0.1:6010"],
+      "exec_mode": "fork",
+      "instances": "1",
+      "wait_ready": true,
+      "autorestart": false,
+      "max_restarts": 5,
+      "interpreter": "python"
+    }
+  ]
+}
